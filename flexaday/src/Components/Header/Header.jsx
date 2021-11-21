@@ -15,8 +15,17 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import ColorLensIcon from "@mui/icons-material/ColorLens";
+import SettingsIcon from "@mui/icons-material/Settings";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDumbbell,
+  faSatelliteDish,
+  faSignInAlt,
+} from "@fortawesome/free-solid-svg-icons";
+
 import "./Header.css";
 
 const drawerWidth = 240;
@@ -122,10 +131,16 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          {["Login", "Challenges", "Statistics"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {(index <= 1 && (
+                  <FontAwesomeIcon
+                    icon={
+                      index === 0 ? faSignInAlt : index === 1 ? faDumbbell : 0
+                    }
+                  ></FontAwesomeIcon>
+                )) || <EqualizerIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -133,10 +148,16 @@ export default function PersistentDrawerLeft(props) {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {["Settings", "Theme", "Delete Account"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index === 0 ? (
+                  <SettingsIcon />
+                ) : index === 1 ? (
+                  <ColorLensIcon className="rainbow" />
+                ) : (
+                  <DeleteIcon style={{ color: "#b24848" }} />
+                )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
