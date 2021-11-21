@@ -20,8 +20,6 @@ const ExerciseInfo = ({ type = "chest" }) => {
       </div>
     );
 
-    console.log(workoutElement);
-
     setExersiceInfo(workoutElement);
   };
 

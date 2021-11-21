@@ -1,0 +1,15 @@
+.logo {
+  width: 160px;
+  height: 160px;
+  margin-left: 20px;
+}
+
+.MuiPaper-root {
+  height: 100px;
+  background-color: #832121;
+}
+
+.MuiToolbar-root {
+  height: 100px;
+  background-color: #832121;
+}
