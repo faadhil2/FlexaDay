@@ -11,18 +11,13 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+import Modal from "../UI/Modal/Modal";
 
 const ExerciseInfo = ({ type = "chest" }) => {
   const { isLoading, error, sendRequest } = useHttp();
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [exerciseInfo, setExersiceInfo] = useState({});
 
   const transformData = (res) => {
@@ -38,7 +33,9 @@ const ExerciseInfo = ({ type = "chest" }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Exercise Demo</Button>
+          <Button onClick={handleOpen} size="small">
+            Exercise Demo
+          </Button>
         </CardActions>
       </Card>
     );
@@ -68,7 +65,10 @@ const ExerciseInfo = ({ type = "chest" }) => {
       exerciseInfo &&
       typeof exerciseInfo === "object" &&
       Object.keys(exerciseInfo).length && (
-        <div className="exercise-info">{exerciseInfo}</div>
+        <div className="exercise-info">
+          <Modal open={open} handleClose={handleClose}></Modal>
+          {exerciseInfo}
+        </div>
       ))
   );
 };

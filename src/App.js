@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import ExerciseInfo from "./Components/ExerciseInfo/ExerciseInfo";
 import SideBar from "./Components/Header/Header";
