@@ -4,6 +4,22 @@ import "./ExerciseInfo.css";
 
 import useHttp from "../../hooks/useHttp";
 
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+  >
+    •
+  </Box>
+);
+
 const ExerciseInfo = ({ type = "chest" }) => {
   const { isLoading, error, sendRequest } = useHttp();
 
@@ -12,12 +28,19 @@ const ExerciseInfo = ({ type = "chest" }) => {
   const transformData = (res) => {
     const workout = res.data[Math.floor(Math.random() * 163)];
     const workoutElement = (
-      <div key={12}>
-        <h1>Current Challenge:</h1>
-        <p>
-          <span>Complete 3 x 12 (sets and reps) of the {workout.name}</span>
-        </p>
-      </div>
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent>
+          <Typography sx={{ fontSize: 32 }} color="text.secondary" gutterBottom>
+            Current Challenge:
+          </Typography>
+          <Typography variant="h5" component="div">
+            Complete 3 x 12 (sets and reps) of the {workout.name}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Exercise Demo</Button>
+        </CardActions>
+      </Card>
     );
 
     setExersiceInfo(workoutElement);
@@ -44,7 +67,9 @@ const ExerciseInfo = ({ type = "chest" }) => {
       !isLoading &&
       exerciseInfo &&
       typeof exerciseInfo === "object" &&
-      Object.keys(exerciseInfo).length && <div>{exerciseInfo}</div>)
+      Object.keys(exerciseInfo).length && (
+        <div className="exercise-info">{exerciseInfo}</div>
+      ))
   );
 };
 

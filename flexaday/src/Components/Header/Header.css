@@ -4,11 +4,12 @@
   margin-left: 20px;
 }
 
-.MuiPaper-root {
+.header .MuiPaper-root {
   height: 100px;
   background-color: #832121;
 }
 
+.header,
 .MuiToolbar-root {
   height: 100px;
   background-color: #832121;

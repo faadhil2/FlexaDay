@@ -88,7 +88,7 @@ export default function PersistentDrawerLeft(props) {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} className="Header">
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
