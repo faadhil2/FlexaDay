@@ -13,3 +13,16 @@
   height: 100px;
   background-color: #832121;
 }
+
+.rainbow {
+  color: linear-gradient(
+    to left,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red
+  );
+}
