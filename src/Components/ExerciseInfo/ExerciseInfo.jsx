@@ -11,34 +11,33 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+import Modal from "../UI/Modal/Modal";
 
 const ExerciseInfo = ({ type = "chest" }) => {
   const { isLoading, error, sendRequest } = useHttp();
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [exerciseInfo, setExersiceInfo] = useState({});
+  const [workout, setWorkout] = useState({});
 
   const transformData = (res) => {
     const workout = res.data[Math.floor(Math.random() * 163)];
+    setWorkout(workout);
     const workoutElement = (
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
-          <Typography sx={{ fontSize: 32 }} color="text.secondary" gutterBottom>
+          <Typography sx={{ fontSize: 22 }} color="text.secondary" gutterBottom>
             Current Challenge:
           </Typography>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" component="div" sx={{ fontSize: 16 }}>
             Complete 3 x 12 (sets and reps) of the {workout.name}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Exercise Demo</Button>
+          <Button onClick={handleOpen} size="small">
+            Exercise Demo
+          </Button>
         </CardActions>
       </Card>
     );
@@ -68,7 +67,14 @@ const ExerciseInfo = ({ type = "chest" }) => {
       exerciseInfo &&
       typeof exerciseInfo === "object" &&
       Object.keys(exerciseInfo).length && (
-        <div className="exercise-info">{exerciseInfo}</div>
+        <div className="exercise-info">
+          <Modal
+            image={workout.gifUrl}
+            open={open}
+            handleClose={handleClose}
+          ></Modal>
+          {exerciseInfo}
+        </div>
       ))
   );
 };
