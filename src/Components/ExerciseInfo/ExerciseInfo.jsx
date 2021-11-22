@@ -19,9 +19,11 @@ const ExerciseInfo = ({ type = "chest" }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [exerciseInfo, setExersiceInfo] = useState({});
+  const [workout, setWorkout] = useState({});
 
   const transformData = (res) => {
     const workout = res.data[Math.floor(Math.random() * 163)];
+    setWorkout(workout);
     const workoutElement = (
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
@@ -66,7 +68,11 @@ const ExerciseInfo = ({ type = "chest" }) => {
       typeof exerciseInfo === "object" &&
       Object.keys(exerciseInfo).length && (
         <div className="exercise-info">
-          <Modal open={open} handleClose={handleClose}></Modal>
+          <Modal
+            image={workout.gifUrl}
+            open={open}
+            handleClose={handleClose}
+          ></Modal>
           {exerciseInfo}
         </div>
       ))
