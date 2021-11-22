@@ -1,36 +1,41 @@
 import "./App.css";
 import ExerciseInfo from "./Components/ExerciseInfo/ExerciseInfo";
 import SideBar from "./Components/Header/Header";
-
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import DoneIcon from "@mui/icons-material/Done";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   return (
     <div className="App">
       <SideBar>
-        {/* <WeeklyCalendar exercise="bicep curls"></WeeklyCalendar> */}
+        <p>
+          <em style={{ fontSize: "1.1rem", fontWeight: 600 }}>
+            <FontAwesomeIcon size="sm" icon={faQuoteLeft} /> Flexaday challenges
+            you daily with random exercises in all major muscle groups to help
+            you achieve your fitness goals.{" "}
+            <FontAwesomeIcon size="sm" icon={faQuoteRight} />
+          </em>
+        </p>
         <div className="side-bar_display">
           <div
             style={{
               display: "flex",
               alignItems: "center",
               marginRight: "26px",
-              // flexDirection: "column",
             }}
           >
             <div className="exercise-list">
               {[
-                // "back",
-                // "chest",
-                // "lower arms",
-                // "upper arms",
-                // "upper legs",
-                // "lower legs",
+                "back",
+                "chest",
+                "lower arms",
+                "upper arms",
+                "upper legs",
+                "lower legs",
                 "waist",
               ].map((el, index) => {
                 return (
@@ -62,7 +67,7 @@ function App() {
                     component="div"
                     sx={{ fontSize: 16 }}
                   >
-                    Don't miss your workouts.
+                    Get Stronger!
                   </Typography>
                 </CardContent>
               </div>

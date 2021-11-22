@@ -7,6 +7,6 @@
   height: 700px;
   overflow-y: auto;
   overflow-x: hidden;
-  display: flex;
+  /* display: flex; */
   width: 680px;
 }
