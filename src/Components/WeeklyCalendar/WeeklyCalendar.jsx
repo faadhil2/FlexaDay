@@ -33,7 +33,7 @@ export default function WeeklyCalendar(props) {
       end: moment()
         .add(1, "hours")
         .toDate(),
-      title: exercise
+      title: `${exercise}`
       // allDay?: boolean
       // resource?: any,
     }
@@ -49,10 +49,11 @@ export default function WeeklyCalendar(props) {
         views={['week']}
         step={720}
         timeslots={1}
+        popup = {true}
         defaultDate={new Date()}
         defaultView="week"
         events={events}
-        style={{ height: "100vh" }}
+        style={{ height: "25vh" }}
       />
       </>
   ))
