@@ -16,7 +16,7 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ handleClose, open }) {
+export default function BasicModal({ handleClose, open, image }) {
   return (
     <div>
       <Modal
@@ -26,6 +26,9 @@ export default function BasicModal({ handleClose, open }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <Typography>
+            <img src={image} alt="..."></img>
+          </Typography>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
           </Typography>

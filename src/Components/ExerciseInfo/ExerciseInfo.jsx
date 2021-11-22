@@ -25,10 +25,10 @@ const ExerciseInfo = ({ type = "chest" }) => {
     const workoutElement = (
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
-          <Typography sx={{ fontSize: 32 }} color="text.secondary" gutterBottom>
+          <Typography sx={{ fontSize: 22 }} color="text.secondary" gutterBottom>
             Current Challenge:
           </Typography>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" component="div" sx={{ fontSize: 16 }}>
             Complete 3 x 12 (sets and reps) of the {workout.name}
           </Typography>
         </CardContent>

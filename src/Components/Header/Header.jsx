@@ -1,146 +1,61 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
+import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
 import SettingsIcon from "@mui/icons-material/Settings";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faDumbbell,
-  faSatelliteDish,
-  faSignInAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faDumbbell, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 import "./Header.css";
 
-const drawerWidth = 240;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
-
-export default function PersistentDrawerLeft(props) {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
+export default function PermanentDrawerLeft(props) {
+  const drawerWidth = 240;
   return (
-    <Box sx={{ display: "flex" }} className="Header">
+    <Box sx={{ display: "flex" }} className="header">
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Flexaday
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <Drawer
         sx={{
+          justifyContent: "center",
+          alignItems: "center",
+          height: "80px",
           width: drawerWidth,
           flexShrink: 0,
+          backgroundColor: "#832121",
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
           },
         }}
-        variant="persistent"
+        variant="permanent"
         anchor="left"
-        open={open}
+        className="drawer-root"
       >
-        <DrawerHeader style={{ justifyContent: "space-between" }}>
-          <img className="logo" src="images/logo4.png" alt="logo" />
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </DrawerHeader>
+        <img className="logo" src="images/logo2.png" alt="logo" />
+        <Toolbar />
+
         <Divider />
         <List>
           {["Login", "Challenges", "Statistics"].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} className="side-link">
               <ListItemIcon>
                 {(index <= 1 && (
                   <FontAwesomeIcon
+                    className="side-link"
                     icon={
                       index === 0 ? faSignInAlt : index === 1 ? faDumbbell : 0
                     }
                   ></FontAwesomeIcon>
-                )) || <EqualizerIcon />}
+                )) || <EqualizerIcon className="side-link" />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -148,26 +63,27 @@ export default function PersistentDrawerLeft(props) {
         </List>
         <Divider />
         <List>
-          {["Settings", "Theme", "Delete Account"].map((text, index) => (
-            <ListItem button key={text}>
+          {["Settings", "Theme"].map((text, index) => (
+            <ListItem button key={text} className="side-link">
               <ListItemIcon>
                 {index === 0 ? (
-                  <SettingsIcon />
+                  <SettingsIcon className="side-link" />
                 ) : index === 1 ? (
-                  <ColorLensIcon className="rainbow" />
-                ) : (
-                  <DeleteIcon style={{ color: "#b24848" }} />
-                )}
+                  <ColorLensIcon className="side-link" />
+                ) : null}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-        {props.children}
-      </Main>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+      >
+        <Toolbar />
+        <Typography paragraph>{props.children}</Typography>
+      </Box>
     </Box>
   );
 }
