@@ -10,7 +10,7 @@ function App() {
       <SideBar>
         <ExerciseInfo></ExerciseInfo>
       </SideBar>
-    <WeeklyCalendar></WeeklyCalendar>
+    <WeeklyCalendar exercise = "bicep curls"></WeeklyCalendar>
     </div>
   );
 }
