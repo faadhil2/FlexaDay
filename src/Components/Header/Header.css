@@ -10,23 +10,16 @@
 }
 
 .header .side-link {
-  color: #ffffffe0;
+  color: #efa32f;
 }
 
 .header .drawer-root {
   height: 100vh;
-  background-color: #6e1414;
+  /* background-color: #6e1414; */
+  background-color: #303030;
 }
 
-.rainbow {
-  color: linear-gradient(
-    to left,
-    violet,
-    indigo,
-    blue,
-    green,
-    yellow,
-    orange,
-    red
-  );
+main.MuiBox-root {
+  height: 100vh;
+  overflow: auto;
 }

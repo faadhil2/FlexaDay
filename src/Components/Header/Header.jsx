@@ -2,10 +2,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -40,7 +38,7 @@ export default function PermanentDrawerLeft(props) {
         anchor="left"
         className="drawer-root"
       >
-        <img className="logo" src="images/logo2.png" alt="logo" />
+        <img className="logo" src="images/logo6.png" alt="logo" />
         <Toolbar />
 
         <Divider />
@@ -82,7 +80,7 @@ export default function PermanentDrawerLeft(props) {
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <Toolbar />
-        <Typography paragraph>{props.children}</Typography>
+        <div>{props.children}</div>
       </Box>
     </Box>
   );

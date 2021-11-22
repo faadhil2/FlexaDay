@@ -1,0 +1,12 @@
+.side-bar_display {
+  display: flex;
+  align-items: flex-start;
+}
+
+.exercise-list {
+  height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  width: 680px;
+}

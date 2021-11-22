@@ -1,5 +1,20 @@
 .exercise-info {
   padding-top: 10px;
-  width: 30%;
-  float: right;
+  width: 90%;
+}
+
+.workout-card:hover {
+  background-color: rgba(0, 128, 0, 0.178);
+  cursor: pointer;
+}
+
+.complete {
+  background-position: center;
+  background-image: url("./complete2.png");
+  background-size: cover;
+  box-shadow: 2px 2px 2px 2px #71767a;
+}
+
+.complete-card {
+  opacity: 0.2;
 }
